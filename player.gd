@@ -24,7 +24,7 @@ func _process(delta):
 		# ついでに、ここで串の現象判定をする
 		if MyGlobal.remained_skewer <= 0:
 			MyGlobal.game_state = MyGlobal.game_state_type.Result
-		if Input.is_action_just_pressed("space"):
+		if MyGlobal.is_decide_key_just_pressed():
 			MyGlobal.remained_skewer -= 1
 	
 

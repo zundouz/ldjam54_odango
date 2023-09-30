@@ -15,7 +15,7 @@ func _process(delta):
 	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
 		# TODO: 上押したらスタート
 		$HUD.show_message("                  PUSH\n                 [SPACE]")
-		if Input.is_action_just_pressed("space"):
+		if MyGlobal.is_decide_key_just_pressed():
 			new_game() # ゲーム開始処理
 			MyGlobal.game_state = MyGlobal.game_state_type.InGame
 	elif MyGlobal.game_state == MyGlobal.game_state_type.InGame:
@@ -23,7 +23,7 @@ func _process(delta):
 		print(MyGlobal.remained_skewer)
 	elif MyGlobal.game_state == MyGlobal.game_state_type.Result:
 		game_over()
-		if Input.is_action_just_pressed("space"):
+		if MyGlobal.is_decide_key_just_pressed():
 			# タイトルに戻るループ
 			MyGlobal.game_state = MyGlobal.game_state_type.Title
 	else:

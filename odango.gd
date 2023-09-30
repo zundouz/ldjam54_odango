@@ -26,7 +26,7 @@ func _process(delta):
 		queue_free()
 	
 	# ボタンを押したときに、座標が串の範囲内だったら特典
-	if Input.is_action_just_pressed("space"):
+	if MyGlobal.is_decide_key_just_pressed():
 		if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
 			is_shot = true;
 			z_index = 10;
