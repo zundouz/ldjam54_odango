@@ -41,6 +41,7 @@ func _process(delta):
 			# スコア加算
 			MyGlobal.score += 10
 			# ちょっと上にずれる演出
+			position.y = position.y - 20.0
 			# TODO: いい感じの方法探す、transformだとむずい
 			
 	if is_shot:

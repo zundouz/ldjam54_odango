@@ -7,6 +7,7 @@ var missing_shot_counter = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite2D.play()
 	screen_size = get_viewport_rect().size
 	pass # Replace with function body.
 

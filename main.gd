@@ -6,6 +6,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Player.start($StartPosition.position)
 	MyGlobal.game_state = MyGlobal.game_state_type.Title
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
