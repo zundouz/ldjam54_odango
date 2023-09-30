@@ -12,8 +12,8 @@ func _process(delta):
 	$AnimatedSprite2D.play()
 	
 	# ボタンを押したときに、座標が串の範囲内だったら特典
-	if Input.is_action_pressed("move_up"):
-		if transform.get_origin().x < Center_X_Pos + 5 and transform.get_origin().x > Center_X_Pos - 5:
+	if Input.is_action_just_pressed("move_up"):
+		if transform.get_origin().x < Center_X_Pos + 25 and transform.get_origin().x > Center_X_Pos - 25:
 			# スコア加算
 			MyGlobalScore.score += 10
 			# その後、お団子が消える
