@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcxbsar8j6may"]
+
+[ext_resource type="Script" path="res://bg_shouji.gd" id="1_62oqg"]
+[ext_resource type="Texture2D" uid="uid://w171ey07pgq1" path="res://textures/bg_shouji.png" id="1_mtsd3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7c501"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mtsd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_mtsd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbh2k"]
+
+[node name="bg_shouji" type="RigidBody2D"]
+position = Vector2(320, 240)
+gravity_scale = 0.0
+script = ExtResource("1_62oqg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7c501")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vbh2k")
+disabled = true
