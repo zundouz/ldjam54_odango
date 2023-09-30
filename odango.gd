@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var Center_X_Pos = 200
+var Center_X_Pos = 320
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
