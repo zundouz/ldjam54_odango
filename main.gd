@@ -10,7 +10,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(MyGlobal.game_state)
 	# ゲームステートにより分岐
 	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
 		# TODO: 上押したらスタート
@@ -20,7 +19,6 @@ func _process(delta):
 			MyGlobal.game_state = MyGlobal.game_state_type.InGame
 	elif MyGlobal.game_state == MyGlobal.game_state_type.InGame:
 		$HUD.update_score(MyGlobal.score)
-		print(MyGlobal.remained_skewer)
 	elif MyGlobal.game_state == MyGlobal.game_state_type.Result:
 		game_over()
 		if MyGlobal.is_decide_key_just_pressed():
@@ -49,9 +47,6 @@ func _on_mob_timer_timeout():
 	# Choose a random location on Path2D.
 	var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
 	mob_spawn_location.progress_ratio = randf()
-	# 別に左右に振る理由もないので今のままでいいのでは…
-#	if mob_spawn_location.progress_ratio >= 0 and mob_spawn_location.progress_ratio < 0.25:
-#		mob_spawn_location.progress_ratio += 0.25
 
 	# Set the mob's direction perpendicular to the path direction.
 	var direction = mob_spawn_location.rotation + PI / 2

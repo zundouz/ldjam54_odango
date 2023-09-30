@@ -2,7 +2,8 @@ extends Area2D
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
-
+var is_missing_shot = false
+var missing_shot_counter = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,12 +13,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
-	# TODO: あとで串アニメーションの処理のために入力処理を復活させる
 	if MyGlobal.is_odango_finished == false:
 		$AnimatedSprite2D.set_animation("shot")
 	elif MyGlobal.is_odango_finished == true:
-		$AnimatedSprite2D.set_animation("default")
+		if is_missing_shot == false:
+			$AnimatedSprite2D.set_animation("default")
+		if (MyGlobal.is_decide_key_just_pressed() 
+			and MyGlobal.remained_skewer < 10
+			and MyGlobal.remained_skewer > 0
+			):
+			is_missing_shot = true
+			$AnimatedSprite2D.set_animation("shot")
 		
 		if MyGlobal.game_state != MyGlobal.game_state_type.InGame:
 			return # リザルト→タイトルに戻れなくなるバグの対策
@@ -25,10 +31,14 @@ func _process(delta):
 		if MyGlobal.remained_skewer <= 0:
 			MyGlobal.game_state = MyGlobal.game_state_type.Result
 		if MyGlobal.is_decide_key_just_pressed():
-			MyGlobal.remained_skewer -= 1
+			MyGlobal.remained_skewer -= 1	
+	if is_missing_shot == true:
+		$AnimatedSprite2D.set_animation("shot")
+		missing_shot_counter = missing_shot_counter + 1
+		if missing_shot_counter > 30:
+			missing_shot_counter = 0
+			is_missing_shot = false
 	
-
-
 func start(pos):
 	position = pos
 	show()
