@@ -21,11 +21,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
-	if MyGlobal.game_state != MyGlobal.game_state_type.InGame:
+	if MyGlobal.game_state == MyGlobal.game_state_type.Result:
 		# インゲーム以外で入力は受け付けない
 		queue_free()
 	
-	# ボタンを押したときに、座標が串の範囲内だったら特典
+	# ボタンを押したときに、座標が串の範囲内だったら得点
 	if MyGlobal.is_decide_key_just_pressed():
 		if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
 			is_shot = true;
@@ -43,6 +43,10 @@ func _process(delta):
 			MyGlobal.is_odango_finished = true
 			# その後、お団子が消える
 			queue_free()
+			
+	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
+		# タイトル画面では移動の一切を無効化
+		return
 			
 	if is_shot == false:		
 		if MyGlobal.is_odango_finished == false:

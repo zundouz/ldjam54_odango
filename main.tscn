@@ -43,5 +43,16 @@ position = Vector2(128, 240)
 [node name="bg_shouji_right" parent="." instance=ExtResource("5_r6nah")]
 position = Vector2(512, 240)
 
+[node name="Node" type="Node" parent="."]
+
+[node name="odango" parent="Node" instance=ExtResource("2_fn2i8")]
+position = Vector2(320, 112)
+
+[node name="odango2" parent="Node" instance=ExtResource("2_fn2i8")]
+position = Vector2(320, 240)
+
+[node name="odango3" parent="Node" instance=ExtResource("2_fn2i8")]
+position = Vector2(320, 176)
+
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
