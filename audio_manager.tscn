@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dejfnf75aimhk"]
+
+[ext_resource type="AudioStream" uid="uid://c2t1asvlm4uec" path="res://sounds/mainBGM_reimport.wav" id="1_07nas"]
+
+[node name="AudioManager" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_07nas")
+autoplay = true
