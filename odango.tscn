@@ -31,3 +31,6 @@ sprite_frames = SubResource("SpriteFrames_s00ll")
 shape = SubResource("CircleShape2D_qjb0r")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-32, -32, 64, 64)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

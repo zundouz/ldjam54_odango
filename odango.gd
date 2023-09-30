@@ -10,6 +10,9 @@ func _ready():
 func _process(delta):
 	$AnimatedSprite2D.play()
 
-# 画面外に言ったらfreeして消えてもらう
-func _on_visible_on_screen_notifier_2d_screen_exited():
+## 画面外に言ったらfreeして消えてもらう
+#func _on_visible_on_screen_notifier_2d_screen_exited():
+#	queue_free()
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()
