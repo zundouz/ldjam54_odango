@@ -21,6 +21,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
+	if MyGlobal.game_state != MyGlobal.game_state_type.InGame:
+		# インゲーム以外で入力は受け付けない
+		queue_free()
+	
 	# ボタンを押したときに、座標が串の範囲内だったら特典
 	if Input.is_action_just_pressed("space"):
 		if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:

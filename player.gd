@@ -18,23 +18,16 @@ func _process(delta):
 		$AnimatedSprite2D.set_animation("shot")
 	elif MyGlobal.is_odango_finished == true:
 		$AnimatedSprite2D.set_animation("default")
-#	if Input.is_action_pressed("move_right"):
-#		velocity.x += 1
-#	if Input.is_action_pressed("move_left"):
-#		velocity.x -= 1
-#	if Input.is_action_pressed("move_down"):
-#		velocity.y += 1
-#	if Input.is_action_pressed("move_up"):
-#		velocity.y -= 1
-
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
 		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+		if MyGlobal.game_state != MyGlobal.game_state_type.InGame:
+			return # リザルト→タイトルに戻れなくなるバグの対策
+		# ついでに、ここで串の現象判定をする
+		if MyGlobal.remained_skewer <= 0:
+			MyGlobal.game_state = MyGlobal.game_state_type.Result
+		if Input.is_action_just_pressed("space"):
+			MyGlobal.remained_skewer -= 1
+	
+
 
 func start(pos):
 	position = pos

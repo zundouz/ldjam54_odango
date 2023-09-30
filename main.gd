@@ -10,6 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(MyGlobal.game_state)
 	# ゲームステートにより分岐
 	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
 		# TODO: 上押したらスタート
@@ -19,26 +20,30 @@ func _process(delta):
 			MyGlobal.game_state = MyGlobal.game_state_type.InGame
 	elif MyGlobal.game_state == MyGlobal.game_state_type.InGame:
 		$HUD.update_score(MyGlobal.score)
+		print(MyGlobal.remained_skewer)
 	elif MyGlobal.game_state == MyGlobal.game_state_type.Result:
-		# TODO: リザルトシーン作成
-		pass
+		game_over()
+		if Input.is_action_just_pressed("space"):
+			# タイトルに戻るループ
+			MyGlobal.game_state = MyGlobal.game_state_type.Title
+	else:
+		print("不正")
 
 func game_over():
 	# $ScoreTimer.stop()
 	$HUD.show_game_over()
 	$MobTimer.stop()
+	$StartTimer.stop()
+
 
 func new_game():
 	MyGlobal.score = 0
+	MyGlobal.remained_skewer = 11
+	MyGlobal.is_odango_finished = true
 	$HUD.update_score(MyGlobal.score)
 	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-
-func _on_StartTimer_timeout():
-	$MobTimer.start()
-	print("StartTimerがタイムアウトした")
-	# $ScoreTimer.start()
 
 func _on_mob_timer_timeout():
 	# Choose a random location on Path2D.
@@ -67,14 +72,5 @@ func _on_mob_timer_timeout():
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 
-
-#func _on_start_timer_timeout():
-#	#func _on_StartTimer_timeout():
-#	$MobTimer.start()
-#	print("StartTimerがタイムアウトした")
-#	# $ScoreTimer.start()
-
 func _on_start_timer_timeout():
 	$MobTimer.start()
-	print("StartTimerがタイムアウトした")
-	# $ScoreTimer.start()
