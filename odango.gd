@@ -20,8 +20,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	# ボタンを押したときに、座標が串の範囲内だったら特典
-	if Input.is_action_just_pressed("move_up") and MyGlobal.is_odango_finished == true:
-		if transform.get_origin().x < Center_X_Pos + 25 and transform.get_origin().x > Center_X_Pos - 25:
+	if Input.is_action_just_pressed("move_up"):
+		if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
 			is_shot = true;
 			z_index = 10;
 			MyGlobal.is_odango_finished = false
