@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs3yxlce2rnex"]
+
+[ext_resource type="PackedScene" uid="uid://cultg46jnif3" path="res://player.tscn" id="1_lwcv8"]
+[ext_resource type="Script" path="res://main.gd" id="1_vhdd1"]
+[ext_resource type="PackedScene" uid="uid://bfiw8j8dbch73" path="res://odango.tscn" id="2_fn2i8"]
+
+[sub_resource type="Curve2D" id="Curve2D_ux7l3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 639, -3, 0, 0, 0, 0, 641, 481, 0, 0, 0, 0, -2, 483, 0, 0, 0, 0, -2, -1, 0, 0, 0, 0, -1, -1)
+}
+point_count = 6
+
+[node name="Main" type="Node"]
+script = ExtResource("1_vhdd1")
+mob_scene = ExtResource("2_fn2i8")
+
+[node name="Player" parent="." instance=ExtResource("1_lwcv8")]
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ux7l3")
+
+[node name="MoveSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-1, -1)
+rotation = -0.00312499
+
+[node name="StartPosition" type="Marker2D" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfiw8j8dbch73"]
+
+[ext_resource type="Script" path="res://odango.gd" id="1_au4to"]
+[ext_resource type="Texture2D" uid="uid://c2qtvq1u784y8" path="res://textures/odango_pink.png" id="1_fqoq2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s00ll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fqoq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fqoq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjb0r"]
+
+[node name="odango" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_au4to")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s00ll")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qjb0r")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
