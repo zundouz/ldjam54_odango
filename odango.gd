@@ -22,7 +22,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	# ボタンを押したときに、座標が串の範囲内だったら特典
-	if Input.is_action_just_pressed("move_up"):
+	if Input.is_action_just_pressed("space"):
 		if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
 			is_shot = true;
 			z_index = 10;

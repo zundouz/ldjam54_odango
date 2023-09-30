@@ -13,8 +13,8 @@ func _process(delta):
 	# ゲームステートにより分岐
 	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
 		# TODO: 上押したらスタート
-		$HUD.show_message("                   PUSH\n               [↑]")
-		if Input.is_action_just_pressed("move_up"):
+		$HUD.show_message("                  PUSH\n                 [SPACE]")
+		if Input.is_action_just_pressed("space"):
 			new_game() # ゲーム開始処理
 			MyGlobal.game_state = MyGlobal.game_state_type.InGame
 	elif MyGlobal.game_state == MyGlobal.game_state_type.InGame:
