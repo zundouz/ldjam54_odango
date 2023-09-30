@@ -54,3 +54,4 @@ move_down={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.176471, 0.309804, 0.721569, 1)
