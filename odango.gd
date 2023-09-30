@@ -27,7 +27,13 @@ func _process(delta):
 	
 	# ボタンを押したときに、座標が串の範囲内だったら得点
 	if MyGlobal.is_decide_key_just_pressed():
-		if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
+		if (transform.get_origin().x < Center_X_Pos + 40 
+			and transform.get_origin().x > Center_X_Pos - 40
+			and $SeSwing.playing != true):
+			# シングルトンのような運用で、複数の団子がヒットしてしまっても効果音は1回しかならないようにする
+			if MyGlobal.is_swing_se_playing_on_odango == false:				
+				MyGlobal.is_swing_se_playing_on_odango = true
+				$SeSwing.play()
 			is_shot = true;
 			z_index = 10;
 			MyGlobal.is_odango_finished = false
@@ -41,6 +47,7 @@ func _process(delta):
 		death_hide_counter += 1
 		if death_hide_counter > 30:
 			MyGlobal.is_odango_finished = true
+			MyGlobal.is_swing_se_playing_on_odango = false
 			# その後、お団子が消える
 			queue_free()
 			

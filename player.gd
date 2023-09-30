@@ -22,6 +22,7 @@ func _process(delta):
 			and MyGlobal.remained_skewer < 10
 			and MyGlobal.remained_skewer > 0
 			):
+			$SeSwing.play()
 			is_missing_shot = true
 			$AnimatedSprite2D.set_animation("shot")
 		

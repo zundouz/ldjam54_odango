@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cultg46jnif3"]
+[gd_scene load_steps=7 format=3 uid="uid://cultg46jnif3"]
 
 [ext_resource type="Texture2D" uid="uid://mhy7lygr0seh" path="res://textures/odango_normal.png" id="1_5y2ut"]
 [ext_resource type="Script" path="res://player.gd" id="1_b27k0"]
 [ext_resource type="Texture2D" uid="uid://cigfcr1oj2puv" path="res://textures/kushi_normal.png" id="3_jy0ky"]
+[ext_resource type="AudioStream" uid="uid://ctwu3wuh10hi7" path="res://sounds/se/swing.wav" id="4_s8gvn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8clx"]
 animations = [{
@@ -40,3 +41,6 @@ animation = &"shot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qhsul")
+
+[node name="SeSwing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s8gvn")
