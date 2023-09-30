@@ -15,10 +15,13 @@ func _process(delta):
 
 func game_over():
 	# $ScoreTimer.stop()
+	$HUD.show_game_over()
 	$MobTimer.stop()
 
 func new_game():
 	score = 0
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 

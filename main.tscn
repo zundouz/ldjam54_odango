@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs3yxlce2rnex"]
+[gd_scene load_steps=6 format=3 uid="uid://bs3yxlce2rnex"]
 
 [ext_resource type="PackedScene" uid="uid://cultg46jnif3" path="res://player.tscn" id="1_lwcv8"]
 [ext_resource type="Script" path="res://main.gd" id="1_vhdd1"]
 [ext_resource type="PackedScene" uid="uid://bfiw8j8dbch73" path="res://odango.tscn" id="2_fn2i8"]
+[ext_resource type="PackedScene" uid="uid://b26rotiw7bfj5" path="res://hud.tscn" id="4_h58th"]
 
 [sub_resource type="Curve2D" id="Curve2D_ux7l3"]
 _data = {
@@ -17,7 +18,7 @@ mob_scene = ExtResource("2_fn2i8")
 [node name="Player" parent="." instance=ExtResource("1_lwcv8")]
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ux7l3")
@@ -30,8 +31,10 @@ rotation = -0.00312499
 position = Vector2(320, 240)
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.2
 one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("4_h58th")]
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
