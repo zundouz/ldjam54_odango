@@ -17,6 +17,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("move_up"):
 		if transform.get_origin().x < Center_X_Pos + 25 and transform.get_origin().x > Center_X_Pos - 25:
 			is_shot = true;
+			z_index = 100;
 			MyGlobal.is_odango_finished = false
 			linear_velocity = Vector2.ZERO
 			# スコア加算
