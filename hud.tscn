@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b26rotiw7bfj5"]
+[gd_scene load_steps=4 format=3 uid="uid://b26rotiw7bfj5"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_p24dr"]
 [ext_resource type="FontFile" uid="uid://b3xpof4xnv77c" path="res://fonts/Xolonium-Regular.ttf" id="1_rfh1g"]
+[ext_resource type="Script" path="res://Message.gd" id="3_r77kx"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_p24dr")
@@ -30,6 +31,7 @@ theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+script = ExtResource("3_r77kx")
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 0.5
