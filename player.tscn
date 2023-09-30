@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cultg46jnif3"]
+[gd_scene load_steps=6 format=3 uid="uid://cultg46jnif3"]
 
 [ext_resource type="Texture2D" uid="uid://mhy7lygr0seh" path="res://textures/odango_normal.png" id="1_5y2ut"]
 [ext_resource type="Script" path="res://player.gd" id="1_b27k0"]
+[ext_resource type="Texture2D" uid="uid://cigfcr1oj2puv" path="res://textures/kushi_normal.png" id="3_jy0ky"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8clx"]
 animations = [{
@@ -15,6 +16,17 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jy0ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jy0ky")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhsul"]
@@ -24,6 +36,7 @@ script = ExtResource("1_b27k0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i8clx")
+animation = &"shot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qhsul")

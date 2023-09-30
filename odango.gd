@@ -17,6 +17,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("move_up"):
 		if transform.get_origin().x < Center_X_Pos + 25 and transform.get_origin().x > Center_X_Pos - 25:
 			is_shot = true;
+			MyGlobal.is_odango_finished = false
 			linear_velocity = Vector2.ZERO
 			# スコア加算
 			MyGlobal.score += 10
@@ -25,6 +26,7 @@ func _process(delta):
 	if is_shot:
 		death_hide_counter += 1
 		if death_hide_counter > 30:
+			MyGlobal.is_odango_finished = true
 			# その後、お団子が消える
 			queue_free()
 

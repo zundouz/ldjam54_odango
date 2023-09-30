@@ -14,6 +14,10 @@ func _ready():
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
 	# TODO: あとで串アニメーションの処理のために入力処理を復活させる
+	if MyGlobal.is_odango_finished == false:
+		$AnimatedSprite2D.set_animation("shot")
+	elif MyGlobal.is_odango_finished == true:
+		$AnimatedSprite2D.set_animation("default")
 #	if Input.is_action_pressed("move_right"):
 #		velocity.x += 1
 #	if Input.is_action_pressed("move_left"):
