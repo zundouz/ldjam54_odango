@@ -38,7 +38,7 @@ func _process(delta):
 			# その後、お団子が消える
 			queue_free()
 			
-	if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
+	if transform.get_origin().x < Center_X_Pos + 32 and transform.get_origin().x > Center_X_Pos - 32:
 		pass
 	else:
 		if MyGlobal.is_odango_finished == false:
