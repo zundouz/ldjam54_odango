@@ -14,6 +14,14 @@ theme_override_fonts/font = ExtResource("1_rfh1g")
 theme_override_font_sizes/font_size = 64
 text = "score:"
 
+[node name="RemainLabel" type="Label" parent="."]
+offset_top = 64.0
+offset_right = 153.0
+offset_bottom = 148.0
+theme_override_fonts/font = ExtResource("1_rfh1g")
+theme_override_font_sizes/font_size = 32
+text = "Remains:"
+
 [node name="Message" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5

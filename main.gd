@@ -18,7 +18,10 @@ func _process(delta):
 			new_game() # ゲーム開始処理
 			MyGlobal.game_state = MyGlobal.game_state_type.InGame
 	elif MyGlobal.game_state == MyGlobal.game_state_type.InGame:
+		# TODO: UIを常に描画しているのは明らかに無駄。値の変化のシグナルを受け取って都度変更する構造に
+		# できると動作が軽くできそう
 		$HUD.update_score(MyGlobal.score)
+		$HUD.update_remain("Remains: " + str(MyGlobal.remained_skewer))
 	elif MyGlobal.game_state == MyGlobal.game_state_type.Result:
 		game_over()
 		if MyGlobal.is_decide_key_just_pressed():
@@ -39,6 +42,7 @@ func new_game():
 	MyGlobal.remained_skewer = 11
 	MyGlobal.is_odango_finished = true
 	$HUD.update_score(MyGlobal.score)
+	$HUD.update_remain(MyGlobal.remained_skewer)
 	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
