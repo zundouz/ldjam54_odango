@@ -28,7 +28,8 @@ func _process(delta):
 			linear_velocity = Vector2.ZERO
 			# スコア加算
 			MyGlobal.score += 10
-			
+			# ちょっと上にずれる演出
+			# TODO: いい感じの方法探す、transformだとむずい
 			
 	if is_shot:
 		death_hide_counter += 1
@@ -36,6 +37,13 @@ func _process(delta):
 			MyGlobal.is_odango_finished = true
 			# その後、お団子が消える
 			queue_free()
+			
+	if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
+		pass
+	else:
+		if MyGlobal.is_odango_finished == false:
+			# TODO: 当たってない団子をちょっと地味にする演出欲しい	
+			pass
 
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():
