@@ -1,7 +1,7 @@
 extends Node
 
 @export var mob_scene: PackedScene
-var score
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,8 +19,8 @@ func game_over():
 	$MobTimer.stop()
 
 func new_game():
-	score = 0
-	$HUD.update_score(score)
+	MyGlobalScore.score = 0
+	$HUD.update_score(MyGlobalScore.score)
 	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -34,7 +34,6 @@ func _on_mob_timer_timeout():
 	# Choose a random location on Path2D.
 	var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
 	mob_spawn_location.progress_ratio = randf()
-	print(mob_spawn_location.progress_ratio)
 	# 別に左右に振る理由もないので今のままでいいのでは…
 #	if mob_spawn_location.progress_ratio >= 0 and mob_spawn_location.progress_ratio < 0.25:
 #		mob_spawn_location.progress_ratio += 0.25

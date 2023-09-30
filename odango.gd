@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+var Center_X_Pos = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +10,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$AnimatedSprite2D.play()
+	
+	# ボタンを押したときに、座標が串の範囲内だったら特典
+	if Input.is_action_pressed("move_up"):
+		if transform.get_origin().x < Center_X_Pos + 5 and transform.get_origin().x > Center_X_Pos - 5:
+			MyGlobalScore.score += 10
 
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():
