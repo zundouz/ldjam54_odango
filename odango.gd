@@ -5,14 +5,20 @@ var is_shot : bool = false
 var death_hide_counter : int = 0
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+func _ready():	
+	# TODO: 乱数で色変更
+	var rand_int : int = randi_range(0, 2)
+	if rand_int == 0:
+		$AnimatedSprite2D.set_animation("default")
+	elif rand_int == 1:
+		$AnimatedSprite2D.set_animation("white")
+	else:
+		$AnimatedSprite2D.set_animation("green")
+	
+	$AnimatedSprite2D.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	$AnimatedSprite2D.play()
-	
+func _process(delta):	
 	# ボタンを押したときに、座標が串の範囲内だったら特典
 	if Input.is_action_just_pressed("move_up") and MyGlobal.is_odango_finished == true:
 		if transform.get_origin().x < Center_X_Pos + 25 and transform.get_origin().x > Center_X_Pos - 25:
