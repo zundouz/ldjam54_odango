@@ -1,6 +1,8 @@
 extends RigidBody2D
 
-var Center_X_Pos = 320
+var Center_X_Pos : float = 320
+var is_shot : bool = false
+var death_hide_counter : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,8 +16,15 @@ func _process(delta):
 	# ボタンを押したときに、座標が串の範囲内だったら特典
 	if Input.is_action_just_pressed("move_up"):
 		if transform.get_origin().x < Center_X_Pos + 25 and transform.get_origin().x > Center_X_Pos - 25:
+			is_shot = true;
+			linear_velocity = Vector2.ZERO
 			# スコア加算
 			MyGlobalScore.score += 10
+			
+			
+	if is_shot:
+		death_hide_counter += 1
+		if death_hide_counter > 30:
 			# その後、お団子が消える
 			queue_free()
 
