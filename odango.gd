@@ -19,7 +19,7 @@ func _process(delta):
 			is_shot = true;
 			linear_velocity = Vector2.ZERO
 			# スコア加算
-			MyGlobalScore.score += 10
+			MyGlobal.score += 10
 			
 			
 	if is_shot:

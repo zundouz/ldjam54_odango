@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MyGlobalScore="*res://My_Global_Score.gd"
+MyGlobal="*res://My_Global.gd"
 
 [display]
 

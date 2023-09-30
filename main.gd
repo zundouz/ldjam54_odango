@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$HUD.update_score(MyGlobalScore.score)
+	$HUD.update_score(MyGlobal.score)
 	pass
 
 func game_over():
@@ -20,8 +20,8 @@ func game_over():
 	$MobTimer.stop()
 
 func new_game():
-	MyGlobalScore.score = 0
-	$HUD.update_score(MyGlobalScore.score)
+	MyGlobal.score = 0
+	$HUD.update_score(MyGlobal.score)
 	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
