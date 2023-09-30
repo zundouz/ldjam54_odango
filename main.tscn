@@ -27,10 +27,10 @@ position = Vector2(-1, -1)
 rotation = -0.00312499
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(320, 0)
+position = Vector2(320, 240)
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.001
 one_shot = true
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
