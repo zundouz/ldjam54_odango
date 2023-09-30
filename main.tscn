@@ -17,14 +17,21 @@ mob_scene = ExtResource("2_fn2i8")
 [node name="Player" parent="." instance=ExtResource("1_lwcv8")]
 
 [node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ux7l3")
 
-[node name="MoveSpawnLocation" type="PathFollow2D" parent="MobPath"]
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 position = Vector2(-1, -1)
 rotation = -0.00312499
 
 [node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(320, 0)
 
 [node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
