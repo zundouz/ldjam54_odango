@@ -6,13 +6,22 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_game()
-
+	MyGlobal.game_state = MyGlobal.game_state_type.Title
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$HUD.update_score(MyGlobal.score)
-	pass
+	# ゲームステートにより分岐
+	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
+		# TODO: 上押したらスタート
+		$HUD.show_message("                   PUSH\n               [↑]")
+		if Input.is_action_just_pressed("move_up"):
+			new_game() # ゲーム開始処理
+			MyGlobal.game_state = MyGlobal.game_state_type.InGame
+	elif MyGlobal.game_state == MyGlobal.game_state_type.InGame:
+		$HUD.update_score(MyGlobal.score)
+	elif MyGlobal.game_state == MyGlobal.game_state_type.Result:
+		# TODO: リザルトシーン作成
+		pass
 
 func game_over():
 	# $ScoreTimer.stop()
