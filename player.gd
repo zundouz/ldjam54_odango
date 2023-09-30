@@ -29,7 +29,7 @@ func _process(delta):
 		if MyGlobal.game_state != MyGlobal.game_state_type.InGame:
 			return # リザルト→タイトルに戻れなくなるバグの対策
 		# ついでに、ここで串の現象判定をする
-		if MyGlobal.remained_skewer <= 0:
+		if MyGlobal.remained_skewer <= 0 and MyGlobal.game_state != MyGlobal.game_state_type.Title:
 			MyGlobal.game_state = MyGlobal.game_state_type.Result
 		if MyGlobal.is_decide_key_just_pressed():
 			MyGlobal.remained_skewer -= 1	

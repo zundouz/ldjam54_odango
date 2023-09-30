@@ -9,11 +9,11 @@ func show_message(text):
 	$MessageTimer.start()	
 
 func show_game_over():
-	show_message("Game Over")
+	show_message("We are closed for business today.")
 	await $MessageTimer.timeout
 	# $Message.text = "Odango"
 	$Message.show()
-	$RemainLabel.hide()
+	# $RemainLabel.hide()
 	await get_tree().create_timer(1).timeout
 #	$StartButton.show()
 
