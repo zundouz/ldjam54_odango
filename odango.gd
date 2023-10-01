@@ -43,6 +43,7 @@ func _process(delta):
 			and global_position.x > Center_X_Pos - shot_hit_judge_val
 			and $SeSwing.playing != true):
 			var center_bonus : int = shot_hit_judge_val - abs(global_position.x - Center_X_Pos)
+			print(center_bonus)
 			print("score: " + str(center_bonus))
 			# シングルトンのような運用で、複数の団子がヒットしてしまっても効果音は1回しかならないようにする
 			if MyGlobal.is_swing_se_playing_on_odango == false:				
@@ -56,14 +57,12 @@ func _process(delta):
 #			position.y = position.y - 20.0
 #			# TODO: いい感じの方法探す、transformだとむずい
 			is_integrate_force = true
-			var added_score : int = (center_bonus * center_bonus) / 10.0 + 10
+			var added_score : int = center_bonus * 2.78 + 1 # 慈悲の1点
 			if MyGlobal.remained_skewer != MyGlobal.remained_skewer_init_val - 1:
 				# スコア加算
-				MyGlobal.score += added_score
-			# ボーナスUIの表示
-				var center_bonus_label_instance = center_bonus_label.instantiate()
-				center_bonus_label_instance.text = "+" + str(added_score)
-				add_child(center_bonus_label_instance)
+				MyGlobal.score += added_score # 慈悲の1点
+				# ボーナスUIの表示
+				show_bonus_ui(added_score, center_bonus)
 			
 	if is_shot:
 		death_hide_counter += 1
@@ -82,6 +81,27 @@ func _process(delta):
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():
 #	queue_free()
+
+func show_bonus_ui(added_score, center_bonus):
+	var center_bonus_label_instance = center_bonus_label.instantiate()
+	# 色変化。center_bonus は団子を真ん中に仕留めて36。最低値は0
+	if center_bonus <= 0:
+		center_bonus_label_instance.modulate = Color(0.1, 0.6, 1.0, 1.0)
+	elif center_bonus > 0 and center_bonus <= 10:
+		center_bonus_label_instance.modulate = Color(0.5, 1.0, 0.5, 1.0)
+	elif center_bonus > 10 and center_bonus <= 20:
+		center_bonus_label_instance.modulate = Color(1.0, 1.0, 0.0, 1.0)
+	elif center_bonus > 20 and center_bonus <= 30:
+		center_bonus_label_instance.modulate = Color(1.0, 0.5, 0.0, 1.0)
+	elif center_bonus > 30:
+		center_bonus_label_instance.modulate = Color(1.0, 0.0, 0.0, 1.0)
+
+	if rotation >= 0:
+		center_bonus_label_instance.set_rotation(rotation * -1.0) # 団子の回転情報をもとにUIを補正
+	else:
+		center_bonus_label_instance.set_rotation(rotation * -1.0)					
+	center_bonus_label_instance.text = "+" + str(added_score)
+	add_child(center_bonus_label_instance)
 
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()
