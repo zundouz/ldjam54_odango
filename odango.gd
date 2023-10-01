@@ -88,6 +88,9 @@ func do_slowly_when_not_shotted_odango():
 			# 減速処理。
 			linear_velocity.x = first_velocity.x / 4.0
 			linear_velocity.y = first_velocity.y / 4.0
+			if linear_velocity.y < 0:
+				# かすったのと見間違えて紛らわしいから動かさないように
+				linear_velocity.y = first_velocity.y / 8.0
 			modulate = Color(0.45, 0.45, 0.45, 0.75)
 
 		else:
