@@ -83,10 +83,13 @@ func do_slowly_when_not_shotted_odango():
 			# 減速処理。
 			linear_velocity.x = first_velocity.x / 4.0
 			linear_velocity.y = first_velocity.y / 4.0
+			modulate = Color(0.45, 0.45, 0.45, 0.75)
 
 		else:
 			linear_velocity.x = first_velocity.x
 			linear_velocity.y = first_velocity.y
+			# 色味も元に戻す
+			modulate = Color(1, 1, 1, 1)
 
 func _integrate_forces(state):
 	if is_integrate_force == true:
