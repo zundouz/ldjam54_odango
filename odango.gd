@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@export var center_bonus_label: PackedScene
+
 var Center_X_Pos : float = 320
 var is_shot : bool = false
 var death_hide_counter : int = 0
@@ -54,9 +56,14 @@ func _process(delta):
 #			position.y = position.y - 20.0
 #			# TODO: いい感じの方法探す、transformだとむずい
 			is_integrate_force = true
+			var added_score : int = (center_bonus * center_bonus) / 10.0
 			if MyGlobal.remained_skewer != MyGlobal.remained_skewer_init_val - 1:
 				# スコア加算
-				MyGlobal.score += (center_bonus * center_bonus) / 10.0
+				MyGlobal.score += added_score
+			# ボーナスUIの表示
+				var center_bonus_label_instance = center_bonus_label.instantiate()
+				center_bonus_label_instance.text = "+" + str(added_score)
+				add_child(center_bonus_label_instance)
 			
 	if is_shot:
 		death_hide_counter += 1

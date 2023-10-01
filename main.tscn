@@ -50,12 +50,15 @@ position = Vector2(512, 240)
 
 [node name="odango" parent="Node" instance=ExtResource("2_fn2i8")]
 position = Vector2(320, 112)
+center_bonus_label = null
 
 [node name="odango2" parent="Node" instance=ExtResource("2_fn2i8")]
 position = Vector2(320, 240)
+center_bonus_label = null
 
 [node name="odango3" parent="Node" instance=ExtResource("2_fn2i8")]
 position = Vector2(320, 176)
+center_bonus_label = null
 
 [node name="AudioManager" parent="." instance=ExtResource("6_6gx38")]
 
