@@ -19,7 +19,7 @@ var odango_type : MyGlobal.odango_type_enum
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
-	var rand_int : int = randi_range(0, 120)
+	var rand_int : int = randi_range(0, 101)
 	if rand_int >= 0 and rand_int < 33:
 		$AnimatedSprite2D.set_animation("red")
 		odango_type = MyGlobal.odango_type_enum.RED
