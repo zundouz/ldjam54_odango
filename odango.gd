@@ -43,8 +43,6 @@ func _process(delta):
 			and global_position.x > Center_X_Pos - shot_hit_judge_val
 			and $SeSwing.playing != true):
 			var center_bonus : int = shot_hit_judge_val - abs(global_position.x - Center_X_Pos)
-			print(center_bonus)
-			print("score: " + str(center_bonus))
 			# シングルトンのような運用で、複数の団子がヒットしてしまっても効果音は1回しかならないようにする
 			if MyGlobal.is_swing_se_playing_on_odango == false:				
 				MyGlobal.is_swing_se_playing_on_odango = true
@@ -57,7 +55,7 @@ func _process(delta):
 #			position.y = position.y - 20.0
 #			# TODO: いい感じの方法探す、transformだとむずい
 			is_integrate_force = true
-			var added_score : int = center_bonus * 2.78 + 1 # 慈悲の1点
+			var added_score : int = center_bonus * 2.77 + 1 # 慈悲の1点
 			if MyGlobal.remained_skewer != MyGlobal.remained_skewer_init_val - 1:
 				# スコア加算
 				MyGlobal.score += added_score # 慈悲の1点
