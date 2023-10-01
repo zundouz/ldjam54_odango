@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://gsey4okg83rb"]
+
+[ext_resource type="FontFile" uid="uid://b3xpof4xnv77c" path="res://fonts/Xolonium-Regular.ttf" id="1_t5bgx"]
+[ext_resource type="Script" path="res://PureColorChainLabel.gd" id="2_qbxl7"]
+
+[sub_resource type="Shader" id="Shader_nqmkt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gitf7"]
+render_priority = 0
+shader = SubResource("Shader_nqmkt")
+
+[node name="PureColorChainMessage" type="Label"]
+material = SubResource("ShaderMaterial_gitf7")
+offset_right = 640.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(0.74902, 0.890196, 0.709804, 1)
+theme_override_fonts/font = ExtResource("1_t5bgx")
+theme_override_font_sizes/font_size = 48
+text = "PURE COLOR CHAIN!
++500"
+vertical_alignment = 1
+script = ExtResource("2_qbxl7")

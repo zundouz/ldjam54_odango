@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs3yxlce2rnex"]
+[gd_scene load_steps=10 format=3 uid="uid://bs3yxlce2rnex"]
 
 [ext_resource type="PackedScene" uid="uid://cultg46jnif3" path="res://player.tscn" id="1_lwcv8"]
 [ext_resource type="Script" path="res://main.gd" id="1_vhdd1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcxbsar8j6may" path="res://bg_shouji.tscn" id="5_r6nah"]
 [ext_resource type="PackedScene" uid="uid://dejfnf75aimhk" path="res://audio_manager.tscn" id="6_6gx38"]
 [ext_resource type="PackedScene" uid="uid://dfd8tmd2ti527" path="res://BonusTimeLabel.tscn" id="7_xaw4e"]
+[ext_resource type="PackedScene" uid="uid://gsey4okg83rb" path="res://PureColorChainLabel.tscn" id="8_i6g6e"]
 
 [sub_resource type="Curve2D" id="Curve2D_ux7l3"]
 _data = {
@@ -66,6 +67,8 @@ center_bonus_label = null
 [node name="BonusTimeMessage" parent="BonusMessage" instance=ExtResource("7_xaw4e")]
 text = "BONUS TIME!!
 ×2"
+
+[node name="PureColorChainMessage" parent="BonusMessage" instance=ExtResource("8_i6g6e")]
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

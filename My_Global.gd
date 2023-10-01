@@ -11,6 +11,7 @@ var remained_skewer : int = remained_skewer_init_val
 var is_odango_finished : bool = true
 var shotted_alive_dango_amount : int = 0
 var is_now_bonus_time : bool = false
+var is_now_pure_color_chain : bool = false
 var all_shotted_odango_kind : Array[odango_type_enum] = []
 
 var is_swing_se_playing_on_odango = false

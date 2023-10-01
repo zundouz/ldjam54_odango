@@ -19,7 +19,7 @@ var odango_type : MyGlobal.odango_type_enum
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
-	var rand_int : int = randi_range(0, 101)
+	var rand_int : int = randi_range(0, 30)
 	if rand_int >= 0 and rand_int < 33:
 		$AnimatedSprite2D.set_animation("red")
 		odango_type = MyGlobal.odango_type_enum.RED
@@ -101,6 +101,11 @@ func _process(delta):
 			if odango_type == MyGlobal.odango_type_enum.BONUS:
 				MyGlobal.is_now_bonus_time = true
 				
+			# 単色ボーナス
+			if (are_all_elements_identical(MyGlobal.all_shotted_odango_kind)
+				and len(MyGlobal.all_shotted_odango_kind) >= 3):
+				MyGlobal.is_now_pure_color_chain = true
+				
 			# 配列の後始末は、一番最後の団子に任せる
 			if MyGlobal.shotted_alive_dango_amount == 0:
 				MyGlobal.all_shotted_odango_kind.clear()
@@ -117,6 +122,21 @@ func _process(delta):
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():
 #	queue_free()
+
+func are_all_elements_identical(arr: Array) -> bool:
+	# 配列が空、もしくは1つの要素しかない場合はtrueを返す
+	if arr.size() <= 1:
+		return true
+
+	# 最初の要素を取得
+	var first_element = arr[0]
+
+	# 各要素が最初の要素と同一であるかチェック
+	for element in arr:
+		if element != first_element:
+			return false
+
+	return true
 
 func show_bonus_ui(added_score, center_bonus):
 	var center_bonus_label_instance = center_bonus_label.instantiate()
