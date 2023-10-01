@@ -20,7 +20,7 @@ func _process(delta):
 		if is_missing_shot == false:
 			$AnimatedSprite2D.set_animation("default")
 		if (MyGlobal.is_decide_key_just_pressed() 
-			and MyGlobal.remained_skewer < 10
+			and MyGlobal.remained_skewer < MyGlobal.remained_skewer_init_val - 1
 			and MyGlobal.remained_skewer > 0
 			):
 			$SeSwing.play()
