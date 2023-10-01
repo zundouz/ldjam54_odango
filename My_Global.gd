@@ -5,6 +5,7 @@ var score : int = 0
 var remained_skewer_init_val : int = 16
 var remained_skewer : int = remained_skewer_init_val
 var is_odango_finished : bool = true
+var shotted_alive_dango_amount : int = 0
 
 var is_swing_se_playing_on_odango = false
 

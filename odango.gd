@@ -58,6 +58,7 @@ func _process(delta):
 				MyGlobal.is_swing_se_playing_on_odango = true
 				$SeSwing.play()
 			is_shot = true;
+			MyGlobal.shotted_alive_dango_amount = MyGlobal.shotted_alive_dango_amount + 1
 			z_index = 10;
 			MyGlobal.is_odango_finished = false
 			linear_velocity = Vector2.ZERO
@@ -78,6 +79,8 @@ func _process(delta):
 		if death_hide_counter > 30:
 			MyGlobal.is_odango_finished = true
 			MyGlobal.is_swing_se_playing_on_odango = false
+			
+			MyGlobal.shotted_alive_dango_amount = MyGlobal.shotted_alive_dango_amount - 1
 			# その後、お団子が消える
 			queue_free()
 			
@@ -86,6 +89,7 @@ func _process(delta):
 		return
 		
 	do_slowly_when_not_shotted_odango()
+	print(MyGlobal.shotted_alive_dango_amount)
 
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():
