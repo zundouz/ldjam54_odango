@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs3yxlce2rnex"]
+[gd_scene load_steps=14 format=3 uid="uid://bs3yxlce2rnex"]
 
 [ext_resource type="PackedScene" uid="uid://cultg46jnif3" path="res://player.tscn" id="1_lwcv8"]
 [ext_resource type="Script" path="res://main.gd" id="1_vhdd1"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://gsey4okg83rb" path="res://PureColorChainLabel.tscn" id="8_i6g6e"]
 [ext_resource type="Texture2D" uid="uid://b4ukd2hhyx7fm" path="res://textures/background.png" id="9_g75ln"]
 [ext_resource type="Script" path="res://BackGroundSprite2D.gd" id="10_jnl5x"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="11_n1d2h"]
 
 [sub_resource type="Curve2D" id="Curve2D_ux7l3"]
 _data = {
@@ -87,6 +88,10 @@ text = "BONUS TIME!!
 position = Vector2(320, 240)
 sprite_frames = SubResource("SpriteFrames_sjbwa")
 script = ExtResource("10_jnl5x")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(320, 240)
+script = ExtResource("11_n1d2h")
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
