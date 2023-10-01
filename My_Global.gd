@@ -27,6 +27,8 @@ func is_decide_key_just_pressed():
 		):
 		return true
 	# mouse
-	if Input.is_action_just_pressed("mouse_left"):
-		return true
+	# ブラウザ起動直後に画面押すとうつっちゃうのがうっとうしいので除外
+	# ボタンとかがあればいいだろうけど…
+#	if Input.is_action_just_pressed("mouse_left"):
+#		return true
 	return false
