@@ -22,7 +22,7 @@ func _ready():
 	# TODO: 乱数で色変更
 	var rand_int : int = randi_range(0, 100)
 	if rand_int >= 0 and rand_int < 33:
-		$AnimatedSprite2D.set_animation("default")
+		$AnimatedSprite2D.set_animation("red")
 		odango_type = odango_type_enum.RED
 	elif rand_int >= 33 and rand_int < 66:
 		$AnimatedSprite2D.set_animation("white")
@@ -31,8 +31,6 @@ func _ready():
 		$AnimatedSprite2D.set_animation("green")
 		odango_type = odango_type_enum.GREEN
 	else:
-		# TODO: ここにゴールド
-		print(rand_int)
 		$AnimatedSprite2D.set_animation("bonus")
 		odango_type = odango_type_enum.BONUS
 	

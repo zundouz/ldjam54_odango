@@ -23,17 +23,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fqoq2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_fqoq2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("3_e7d40")
 }, {
 "duration": 1.0,
@@ -41,6 +30,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fqoq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fqoq2")
+}],
+"loop": true,
+"name": &"red",
 "speed": 5.0
 }, {
 "frames": [{
@@ -65,7 +65,7 @@ center_bonus_label = ExtResource("2_suawd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s00ll")
-animation = &"bonus"
+animation = &"red"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qjb0r")
