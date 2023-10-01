@@ -111,7 +111,7 @@ func _process(delta):
 		return
 		
 	do_slowly_when_not_shotted_odango()
-	print(MyGlobal.is_now_bonus_time)
+	print(MyGlobal.all_shotted_odango_kind)
 
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():

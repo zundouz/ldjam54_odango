@@ -42,7 +42,7 @@ func new_game():
 	MyGlobal.is_odango_finished = true
 	$HUD.update_score(MyGlobal.score)
 	$HUD.update_remain(MyGlobal.remained_skewer)
-	$HUD.show_message("Get Ready")
+	$HUD.show_message("Shoot Dango")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
