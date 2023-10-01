@@ -19,10 +19,14 @@ var odango_type : MyGlobal.odango_type_enum
 var prev_shotted_odango_array_len : int = 0
 var prev_shotted_odango_array_init_counter : int = 0
 
+var rotation_anime_random_int : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
 	var rand_int : int = randi_range(0, 100)
+	rotation_anime_random_int = rand_int % 4 + 1
+	
 	if rand_int >= 0 and rand_int < 33:
 		$AnimatedSprite2D.set_animation("red")
 		odango_type = MyGlobal.odango_type_enum.RED
@@ -87,7 +91,11 @@ func _process(delta):
 				if center_bonus_label != null:
 					show_bonus_ui(added_score, center_bonus)
 			
-	if is_shot:
+	if not is_shot:
+		if MyGlobal.game_state == MyGlobal.game_state_type.InGame:
+			# ショットされてないときのみ回転アニメ反映
+			$AnimatedSprite2D.rotation_degrees = $AnimatedSprite2D.rotation_degrees + rotation_anime_random_int
+	else:
 		death_hide_counter += 1
 		if death_hide_counter > 30:
 			MyGlobal.is_odango_finished = true
