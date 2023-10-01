@@ -40,7 +40,7 @@ func game_over():
 
 func new_game():
 	MyGlobal.score = 0
-	MyGlobal.remained_skewer = 11
+	MyGlobal.remained_skewer = MyGlobal.remained_skewer_init_val
 	MyGlobal.is_odango_finished = true
 	$HUD.update_score(MyGlobal.score)
 	$HUD.update_remain(MyGlobal.remained_skewer)
