@@ -43,14 +43,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	if MyGlobal.game_state == MyGlobal.game_state_type.Result:
-		# インゲーム以外で入力は受け付けない
+		# リザルト画面では団子を消す
 		queue_free()
 	
 	# ボタンを押したときに、座標が串の範囲内だったら得点
 	if MyGlobal.is_decide_key_just_pressed():
 		if (global_position.x < Center_X_Pos + shot_hit_judge_val
 			and global_position.x > Center_X_Pos - shot_hit_judge_val
-			and $SeSwing.playing != true):
+			and $SeSwing.playing != true
+			):
 			var center_bonus : int = shot_hit_judge_val - abs(global_position.x - Center_X_Pos)
 			# シングルトンのような運用で、複数の団子がヒットしてしまっても効果音は1回しかならないようにする
 			if MyGlobal.is_swing_se_playing_on_odango == false:				
@@ -69,7 +70,8 @@ func _process(delta):
 				# スコア加算
 				MyGlobal.score += added_score # 慈悲の1点
 				# ボーナスUIの表示
-				show_bonus_ui(added_score, center_bonus)
+				if center_bonus_label != null:
+					show_bonus_ui(added_score, center_bonus)
 			
 	if is_shot:
 		death_hide_counter += 1
