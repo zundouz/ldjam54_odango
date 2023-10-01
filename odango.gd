@@ -30,8 +30,13 @@ func _ready():
 		$AnimatedSprite2D.set_animation("green")
 		odango_type = MyGlobal.odango_type_enum.GREEN
 	else:
-		$AnimatedSprite2D.set_animation("bonus")
-		odango_type = MyGlobal.odango_type_enum.BONUS
+		if MyGlobal.game_state == MyGlobal.game_state_type.Title:
+			# タイトル画面ではボーナス団子が出てほしくないので、置き換え
+			$AnimatedSprite2D.set_animation("green")
+			odango_type = MyGlobal.odango_type_enum.GREEN
+		else:
+			$AnimatedSprite2D.set_animation("bonus")
+			odango_type = MyGlobal.odango_type_enum.BONUS
 	
 	$AnimatedSprite2D.play()
 	
