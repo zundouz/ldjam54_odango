@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfd8tmd2ti527"]
+
+[ext_resource type="FontFile" uid="uid://b3xpof4xnv77c" path="res://fonts/Xolonium-Regular.ttf" id="1_n0ai5"]
+[ext_resource type="Script" path="res://BonusTimeLabel.gd" id="2_e1fq4"]
+
+[sub_resource type="Shader" id="Shader_nqmkt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gitf7"]
+render_priority = 0
+shader = SubResource("Shader_nqmkt")
+
+[node name="BonusTimeMessage" type="Label"]
+material = SubResource("ShaderMaterial_gitf7")
+offset_right = 640.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(1, 1, 0.72549, 1)
+theme_override_fonts/font = ExtResource("1_n0ai5")
+theme_override_font_sizes/font_size = 80
+text = "BONUS TIME !!
+×2"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_e1fq4")

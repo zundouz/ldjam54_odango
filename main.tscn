@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs3yxlce2rnex"]
+[gd_scene load_steps=9 format=3 uid="uid://bs3yxlce2rnex"]
 
 [ext_resource type="PackedScene" uid="uid://cultg46jnif3" path="res://player.tscn" id="1_lwcv8"]
 [ext_resource type="Script" path="res://main.gd" id="1_vhdd1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b26rotiw7bfj5" path="res://hud.tscn" id="4_h58th"]
 [ext_resource type="PackedScene" uid="uid://dcxbsar8j6may" path="res://bg_shouji.tscn" id="5_r6nah"]
 [ext_resource type="PackedScene" uid="uid://dejfnf75aimhk" path="res://audio_manager.tscn" id="6_6gx38"]
+[ext_resource type="PackedScene" uid="uid://dfd8tmd2ti527" path="res://BonusTimeLabel.tscn" id="7_xaw4e"]
 
 [sub_resource type="Curve2D" id="Curve2D_ux7l3"]
 _data = {
@@ -59,6 +60,12 @@ position = Vector2(320, 176)
 center_bonus_label = null
 
 [node name="AudioManager" parent="." instance=ExtResource("6_6gx38")]
+
+[node name="BonusMessage" type="Node" parent="."]
+
+[node name="BonusTimeMessage" parent="BonusMessage" instance=ExtResource("7_xaw4e")]
+text = "BONUS TIME!!
+×2"
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

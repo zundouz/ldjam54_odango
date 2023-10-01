@@ -31,6 +31,7 @@ func _process(delta):
 
 func game_over():
 	# $ScoreTimer.stop()
+	MyGlobal.is_now_bonus_time = false
 	$HUD.show_game_over()
 	$MobTimer.stop()
 	$StartTimer.stop()
