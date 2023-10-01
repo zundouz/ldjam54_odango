@@ -94,11 +94,15 @@ func show_bonus_ui(added_score, center_bonus):
 	# 色変化。center_bonus は団子を真ん中に仕留めて36。最低値は0
 	if center_bonus <= 5:
 		center_bonus_label_instance.modulate = Color(0.0, 0.0, 1.0, 1.0)
+		center_bonus_label_instance.scale = Vector2(0.65, 0.65)
 	elif center_bonus > 5 and center_bonus <= 15:
 		center_bonus_label_instance.modulate = Color(0.5, 1.0, 0.5, 1.0)
+		center_bonus_label_instance.scale = Vector2(0.75, 0.75)
 	elif center_bonus > 15 and center_bonus <= 25:
+		center_bonus_label_instance.scale = Vector2(0.85, 0.85)
 		center_bonus_label_instance.modulate = Color(1.0, 0.5, 0.0, 1.0)
 	elif center_bonus > 25 and center_bonus <= 34:
+		center_bonus_label_instance.scale = Vector2(0.95, 0.95)
 		center_bonus_label_instance.modulate = Color(1.0, 0.0, 0.0, 1.0)
 	elif center_bonus > 34:
 		center_bonus_label_instance.modulate = Color(1.0, 0.0, 0.0, 1.0)
