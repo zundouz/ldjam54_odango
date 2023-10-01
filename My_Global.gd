@@ -1,15 +1,19 @@
 extends Node
 
+# 型
+enum game_state_type { Title, InGame, Result }
+enum odango_type_enum { RED, WHITE, GREEN, BONUS }
+
 # グローバル変数の作成
 var score : int = 0
 var remained_skewer_init_val : int = 16
 var remained_skewer : int = remained_skewer_init_val
 var is_odango_finished : bool = true
 var shotted_alive_dango_amount : int = 0
+var is_now_bonus_time : bool = false
+var all_shotted_odango_kind : Array[odango_type_enum] = []
 
 var is_swing_se_playing_on_odango = false
-
-enum game_state_type { Title, InGame, Result }
 
 var game_state : game_state_type = game_state_type.Title
 

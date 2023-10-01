@@ -14,25 +14,24 @@ var first_velocity : Vector2 = Vector2.ZERO
 
 var shot_hit_judge_val : int = 36
 
-enum odango_type_enum { RED, WHITE, GREEN, BONUS }
-var odango_type : odango_type_enum
+var odango_type : MyGlobal.odango_type_enum
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
-	var rand_int : int = randi_range(0, 100)
+	var rand_int : int = randi_range(0, 120)
 	if rand_int >= 0 and rand_int < 33:
 		$AnimatedSprite2D.set_animation("red")
-		odango_type = odango_type_enum.RED
+		odango_type = MyGlobal.odango_type_enum.RED
 	elif rand_int >= 33 and rand_int < 66:
 		$AnimatedSprite2D.set_animation("white")
-		odango_type = odango_type_enum.WHITE
+		odango_type = MyGlobal.odango_type_enum.WHITE
 	elif rand_int >= 66 and rand_int < 100:
 		$AnimatedSprite2D.set_animation("green")
-		odango_type = odango_type_enum.GREEN
+		odango_type = MyGlobal.odango_type_enum.GREEN
 	else:
 		$AnimatedSprite2D.set_animation("bonus")
-		odango_type = odango_type_enum.BONUS
+		odango_type = MyGlobal.odango_type_enum.BONUS
 	
 	$AnimatedSprite2D.play()
 	
@@ -59,6 +58,7 @@ func _process(delta):
 				$SeSwing.play()
 			is_shot = true;
 			MyGlobal.shotted_alive_dango_amount = MyGlobal.shotted_alive_dango_amount + 1
+			MyGlobal.all_shotted_odango_kind.append(odango_type)
 			z_index = 10;
 			MyGlobal.is_odango_finished = false
 			linear_velocity = Vector2.ZERO
@@ -69,7 +69,10 @@ func _process(delta):
 			var added_score : int = center_bonus * 2.77 + 1 # 慈悲の1点
 			if MyGlobal.remained_skewer != MyGlobal.remained_skewer_init_val - 1:
 				# スコア加算
-				MyGlobal.score += added_score # 慈悲の1点
+				if MyGlobal.is_now_bonus_time == true:
+					MyGlobal.score += (added_score * 2)
+				else:
+					MyGlobal.score += added_score
 				# ボーナスUIの表示
 				if center_bonus_label != null:
 					show_bonus_ui(added_score, center_bonus)
@@ -82,6 +85,20 @@ func _process(delta):
 			
 			MyGlobal.shotted_alive_dango_amount = MyGlobal.shotted_alive_dango_amount - 1
 			# その後、お団子が消える
+			
+			# ボーナス処理
+			# どのケースにおいても無効化
+			# TODO: 配列で判定
+			if (MyGlobal.is_now_bonus_time == true
+				and MyGlobal.all_shotted_odango_kind.has(MyGlobal.odango_type_enum.BONUS) != true):
+				MyGlobal.is_now_bonus_time = false
+			# ボーナス団子とってたら有効
+			if odango_type == MyGlobal.odango_type_enum.BONUS:
+				MyGlobal.is_now_bonus_time = true
+				
+			# 配列の後始末は、一番最後の団子に任せる
+			if MyGlobal.shotted_alive_dango_amount == 0:
+				MyGlobal.all_shotted_odango_kind.clear()
 			queue_free()
 			
 	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
@@ -89,7 +106,7 @@ func _process(delta):
 		return
 		
 	do_slowly_when_not_shotted_odango()
-	print(MyGlobal.shotted_alive_dango_amount)
+	print(MyGlobal.is_now_bonus_time)
 
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -101,8 +118,12 @@ func show_bonus_ui(added_score, center_bonus):
 	if rotation >= 0:
 		center_bonus_label_instance.set_rotation(rotation * -1.0) # 団子の回転情報をもとにUIを補正
 	else:
-		center_bonus_label_instance.set_rotation(rotation * -1.0)					
-	center_bonus_label_instance.text = "+" + str(added_score)
+		center_bonus_label_instance.set_rotation(rotation * -1.0)
+		
+	if MyGlobal.is_now_bonus_time == true:
+		center_bonus_label_instance.text = "+" + str(added_score) + "×2"
+	else:
+		center_bonus_label_instance.text = "+" + str(added_score)
 	add_child(center_bonus_label_instance)
 	
 	# tween をするために add_child の後ろに書く
