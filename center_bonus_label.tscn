@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2l3r7k2i14wt"]
+[gd_scene load_steps=5 format=3 uid="uid://d2l3r7k2i14wt"]
 
+[ext_resource type="Shader" path="res://center_bonus_label.gdshader" id="1_1s4yl"]
 [ext_resource type="FontFile" uid="uid://b3xpof4xnv77c" path="res://fonts/Xolonium-Regular.ttf" id="2_8qvs0"]
 [ext_resource type="Script" path="res://CenterBonus.gd" id="3_36jg5"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gitf7"]
+render_priority = 0
+shader = ExtResource("1_1s4yl")
+
 [node name="CenterBonus" type="Label"]
+material = SubResource("ShaderMaterial_gitf7")
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(1, 1, 0.72549, 1)

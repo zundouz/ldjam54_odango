@@ -14,16 +14,26 @@ var first_velocity : Vector2 = Vector2.ZERO
 
 var shot_hit_judge_val : int = 36
 
+enum odango_type_enum { RED, WHITE, GREEN, BONUS }
+var odango_type : odango_type_enum
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
-	var rand_int : int = randi_range(0, 2)
-	if rand_int == 0:
+	var rand_int : int = randi_range(0, 100)
+	if rand_int >= 0 and rand_int < 33:
 		$AnimatedSprite2D.set_animation("default")
-	elif rand_int == 1:
+		odango_type = odango_type_enum.RED
+	elif rand_int <= 33 and rand_int < 66:
 		$AnimatedSprite2D.set_animation("white")
-	else:
+		odango_type = odango_type_enum.WHITE
+	elif rand_int <= 66 and rand_int < 100:
 		$AnimatedSprite2D.set_animation("green")
+		odango_type = odango_type_enum.GREEN
+	else:
+		# TODO: ここにゴールド
+		$AnimatedSprite2D.set_animation("green")
+		odango_type = odango_type_enum.BONUS
 	
 	$AnimatedSprite2D.play()
 	
