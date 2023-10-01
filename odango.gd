@@ -82,17 +82,6 @@ func _process(delta):
 
 func show_bonus_ui(added_score, center_bonus):
 	var center_bonus_label_instance = center_bonus_label.instantiate()
-	# 色変化。center_bonus は団子を真ん中に仕留めて36。最低値は0
-	if center_bonus <= 0:
-		center_bonus_label_instance.modulate = Color(0.1, 0.6, 1.0, 1.0)
-	elif center_bonus > 0 and center_bonus <= 10:
-		center_bonus_label_instance.modulate = Color(0.5, 1.0, 0.5, 1.0)
-	elif center_bonus > 10 and center_bonus <= 20:
-		center_bonus_label_instance.modulate = Color(1.0, 1.0, 0.0, 1.0)
-	elif center_bonus > 20 and center_bonus <= 30:
-		center_bonus_label_instance.modulate = Color(1.0, 0.5, 0.0, 1.0)
-	elif center_bonus > 30:
-		center_bonus_label_instance.modulate = Color(1.0, 0.0, 0.0, 1.0)
 
 	if rotation >= 0:
 		center_bonus_label_instance.set_rotation(rotation * -1.0) # 団子の回転情報をもとにUIを補正
@@ -100,6 +89,20 @@ func show_bonus_ui(added_score, center_bonus):
 		center_bonus_label_instance.set_rotation(rotation * -1.0)					
 	center_bonus_label_instance.text = "+" + str(added_score)
 	add_child(center_bonus_label_instance)
+	
+	# tween をするために add_child の後ろに書く
+	# 色変化。center_bonus は団子を真ん中に仕留めて36。最低値は0
+	if center_bonus <= 5:
+		center_bonus_label_instance.modulate = Color(0.0, 0.0, 1.0, 1.0)
+	elif center_bonus > 5 and center_bonus <= 15:
+		center_bonus_label_instance.modulate = Color(0.5, 1.0, 0.5, 1.0)
+	elif center_bonus > 15 and center_bonus <= 25:
+		center_bonus_label_instance.modulate = Color(1.0, 0.5, 0.0, 1.0)
+	elif center_bonus > 25 and center_bonus <= 34:
+		center_bonus_label_instance.modulate = Color(1.0, 0.0, 0.0, 1.0)
+	elif center_bonus > 34:
+		center_bonus_label_instance.modulate = Color(1.0, 0.0, 0.0, 1.0)
+		center_bonus_label_instance.apply_ui_blink(1.0, 0.0, 0.0)
 
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()
