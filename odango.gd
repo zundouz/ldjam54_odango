@@ -16,6 +16,9 @@ var shot_hit_judge_val : int = 36
 
 var odango_type : MyGlobal.odango_type_enum
 
+var prev_shotted_odango_array_len : int = 0
+var prev_shotted_odango_array_init_counter : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
@@ -118,6 +121,17 @@ func _process(delta):
 	do_slowly_when_not_shotted_odango()
 	print(MyGlobal.all_shotted_odango_kind)
 	print(MyGlobal.is_now_bonus_time)
+	
+	
+	# FIXME: 対症療法だけど、判定配列が初期化されないで蓄積されてしまう場合は強制的に初期化しておく
+	if prev_shotted_odango_array_len == len(MyGlobal.all_shotted_odango_kind):
+		prev_shotted_odango_array_init_counter = prev_shotted_odango_array_init_counter + 1
+		if prev_shotted_odango_array_init_counter > 30:
+			MyGlobal.all_shotted_odango_kind.clear()
+	else:
+		prev_shotted_odango_array_init_counter = 0
+		
+	prev_shotted_odango_array_len = len(MyGlobal.all_shotted_odango_kind)
 
 ## 画面外に言ったらfreeして消えてもらう
 #func _on_visible_on_screen_notifier_2d_screen_exited():
