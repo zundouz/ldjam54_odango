@@ -40,6 +40,8 @@ func _ready():
 		else:
 			$AnimatedSprite2D.set_animation("bonus")
 			odango_type = MyGlobal.odango_type_enum.BONUS
+			linear_velocity.x = linear_velocity.x * 1.25
+			linear_velocity.y = linear_velocity.y * 1.25
 	
 	$AnimatedSprite2D.play()
 	
