@@ -24,7 +24,7 @@ var rotation_anime_random_int : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
-	var rand_int : int = randi_range(0, 100)
+	var rand_int : int = randi_range(0, 200)
 	rotation_anime_random_int = rand_int % 4 + 1
 	
 	if rand_int >= 0 and rand_int < 33:
@@ -70,6 +70,9 @@ func _process(delta):
 			if MyGlobal.is_swing_se_playing_on_odango == false:				
 				MyGlobal.is_swing_se_playing_on_odango = true
 				$SeSwing.play()
+				$SeHitDango.play()					
+			if odango_type == MyGlobal.odango_type_enum.BONUS:
+				$SeHitBonusDango.play()
 			is_shot = true;
 			MyGlobal.shotted_alive_dango_amount = MyGlobal.shotted_alive_dango_amount + 1
 			MyGlobal.all_shotted_odango_kind.append(odango_type)
