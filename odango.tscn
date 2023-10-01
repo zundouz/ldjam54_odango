@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfiw8j8dbch73"]
+[gd_scene load_steps=14 format=3 uid="uid://bfiw8j8dbch73"]
 
 [ext_resource type="Script" path="res://odango.gd" id="1_au4to"]
 [ext_resource type="PackedScene" uid="uid://d2l3r7k2i14wt" path="res://center_bonus_label.tscn" id="2_suawd"]
+[ext_resource type="Texture2D" uid="uid://bn8flpoabujia" path="res://textures/odango_gold1.png" id="3_d8fit"]
 [ext_resource type="Texture2D" uid="uid://dfe84jyy2fyh0" path="res://textures/odango_green.png" id="3_e7d40"]
-[ext_resource type="Texture2D" uid="uid://74vjdi0ml4k7" path="res://textures/odango_bonus.png" id="3_l0dy3"]
+[ext_resource type="Texture2D" uid="uid://8hveigyrc5i8" path="res://textures/odango_gold2.png" id="4_s35lq"]
 [ext_resource type="AudioStream" uid="uid://ctwu3wuh10hi7" path="res://sounds/se/swing.wav" id="5_2ngai"]
 [ext_resource type="Texture2D" uid="uid://dmt0cyklwi4" path="res://textures/odango_green2.png" id="5_b0exf"]
 [ext_resource type="Texture2D" uid="uid://b12m0385p2giq" path="res://textures/odango_red1.png" id="6_yhe7a"]
@@ -15,10 +16,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_l0dy3")
+"texture": ExtResource("3_d8fit")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_l0dy3")
+"texture": ExtResource("4_s35lq")
 }],
 "loop": true,
 "name": &"bonus",
@@ -68,7 +69,7 @@ center_bonus_label = ExtResource("2_suawd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s00ll")
-animation = &"white"
+animation = &"bonus"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qjb0r")
