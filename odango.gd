@@ -24,7 +24,7 @@ var rotation_anime_random_int : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
-	var rand_int : int = randi_range(0, 200)
+	var rand_int : int = randi_range(0, 100)
 	rotation_anime_random_int = rand_int % 4 + 1
 	
 	if rand_int >= 0 and rand_int < 33:
