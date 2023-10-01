@@ -96,5 +96,5 @@ func do_slowly_when_not_shotted_odango():
 func _integrate_forces(state):
 	if is_integrate_force == true:
 		print("impulse")
-		state.apply_central_impulse(Vector2(0, -60)) # 回転のことを考慮せずに力を外部から与えることができる
+		state.apply_central_impulse(Vector2(0, -30)) # 回転のことを考慮せずに力を外部から与えることができる
 		is_integrate_force = false
