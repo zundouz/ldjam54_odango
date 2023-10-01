@@ -116,7 +116,7 @@ func _process(delta):
 			# ボーナス団子とってたら有効
 			if odango_type == MyGlobal.odango_type_enum.BONUS:
 				MyGlobal.is_now_bonus_time = true
-				
+				$SeBonusMessage.play()
 			# 単色ボーナス
 			if (are_all_elements_identical(MyGlobal.all_shotted_odango_kind)
 				and len(MyGlobal.all_shotted_odango_kind) >= 3):

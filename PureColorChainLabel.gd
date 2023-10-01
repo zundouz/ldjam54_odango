@@ -27,6 +27,9 @@ func _process(delta: float) -> void:
 	if not MyGlobal.is_now_pure_color_chain:
 		hide()
 	else:
+		if show_counter == 0:
+			# 効果音
+			$SePureBonus.play()
 		show_counter = show_counter + 1
 		if show_counter > 30:
 			hide()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://gsey4okg83rb"]
+[gd_scene load_steps=6 format=3 uid="uid://gsey4okg83rb"]
 
 [ext_resource type="FontFile" uid="uid://b3xpof4xnv77c" path="res://fonts/Xolonium-Regular.ttf" id="1_t5bgx"]
 [ext_resource type="Script" path="res://PureColorChainLabel.gd" id="2_qbxl7"]
+[ext_resource type="AudioStream" uid="uid://psai31fmjcd7" path="res://sounds/se/pureBonus.wav" id="3_0gffc"]
 
 [sub_resource type="Shader" id="Shader_nqmkt"]
 
@@ -20,3 +21,6 @@ text = "PURE COLOR CHAIN!
 +500"
 vertical_alignment = 1
 script = ExtResource("2_qbxl7")
+
+[node name="SePureBonus" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0gffc")

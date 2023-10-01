@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfiw8j8dbch73"]
+[gd_scene load_steps=17 format=3 uid="uid://bfiw8j8dbch73"]
 
 [ext_resource type="Script" path="res://odango.gd" id="1_au4to"]
 [ext_resource type="PackedScene" uid="uid://d2l3r7k2i14wt" path="res://center_bonus_label.tscn" id="2_suawd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://clv8e7o2ghxi5" path="res://textures/odango_white2.png" id="9_cnht0"]
 [ext_resource type="AudioStream" uid="uid://bxyoybqee67hk" path="res://sounds/se/dangoHit.wav" id="12_6mvm3"]
 [ext_resource type="AudioStream" uid="uid://c3u2x77xpwccf" path="res://sounds/se/goldHit.wav" id="13_71hxe"]
+[ext_resource type="AudioStream" uid="uid://b6b23cf1sv7ad" path="res://sounds/se/goldBonus.wav" id="14_o057i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s00ll"]
 animations = [{
@@ -87,5 +88,8 @@ stream = ExtResource("12_6mvm3")
 
 [node name="SeHitBonusDango" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_71hxe")
+
+[node name="SeBonusMessage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_o057i")
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
