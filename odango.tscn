@@ -38,10 +38,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_yhe7a")
+"texture": ExtResource("7_h1b33")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_h1b33")
+"texture": ExtResource("6_yhe7a")
 }],
 "loop": true,
 "name": &"red",
@@ -69,7 +69,7 @@ center_bonus_label = ExtResource("2_suawd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s00ll")
-animation = &"bonus"
+animation = &"white"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qjb0r")
