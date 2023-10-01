@@ -46,12 +46,13 @@ func _process(delta):
 			z_index = 10;
 			MyGlobal.is_odango_finished = false
 			linear_velocity = Vector2.ZERO
-			# スコア加算
-			MyGlobal.score += 10
 			# ちょっと上にずれる演出
 #			position.y = position.y - 20.0
 #			# TODO: いい感じの方法探す、transformだとむずい
 			is_integrate_force = true
+			if MyGlobal.remained_skewer != MyGlobal.remained_skewer_init_val - 1:
+				# スコア加算
+				MyGlobal.score += 10
 			
 	if is_shot:
 		death_hide_counter += 1
