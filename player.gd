@@ -33,6 +33,8 @@ func _process(delta):
 		if MyGlobal.remained_skewer <= 0 and MyGlobal.game_state != MyGlobal.game_state_type.Title:
 			MyGlobal.game_state = MyGlobal.game_state_type.Result
 		if MyGlobal.is_decide_key_just_pressed():
+			$AnimatedSprite2D.set_animation("shot")
+			$SeSwing.play()
 			MyGlobal.remained_skewer -= 1	
 	if is_missing_shot == true:
 		$AnimatedSprite2D.set_animation("shot")
