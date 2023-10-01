@@ -8,6 +8,8 @@ var is_already_slowed : bool = false
 
 var is_integrate_force : bool = false
 
+var first_velocity : Vector2 = Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
@@ -20,6 +22,10 @@ func _ready():
 		$AnimatedSprite2D.set_animation("green")
 	
 	$AnimatedSprite2D.play()
+	
+	# 初期化時の最初の速度を変数に保持しておく
+	first_velocity.x = linear_velocity.x
+	first_velocity.y = linear_velocity.y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
@@ -70,31 +76,19 @@ func _on_visible_on_screen_enabler_2d_screen_exited():
 
 func do_slowly_when_not_shotted_odango():
 	# TODO: 今、団子が向かっている方向に応じて方向は変化させずに速度だけを変えたい…
-	if is_shot == false:		
+	if is_shot == false:
 		if MyGlobal.is_odango_finished == false:
 			# TODO: 当たってない団子をちょっと地味にする演出欲しい
 			is_already_slowed = true
-			if linear_velocity.x >= 0:
-				linear_velocity = Vector2(50.0, 0.0)
-			else:
-				linear_velocity = Vector2(-50.0, 0.0)
+			# 減速処理。
+			linear_velocity.x = first_velocity.x / 4.0
+			linear_velocity.y = first_velocity.y / 4.0
 
 		else:
-			if transform.get_origin().x < Center_X_Pos + 40 and transform.get_origin().x > Center_X_Pos - 40:
-				# すでにスローになっている団子が真ん中で詰まられると困る
-				if is_already_slowed:
-					if linear_velocity.x >= 0:
-						linear_velocity = Vector2(randf_range(150.0, 300.0), 0.0)
-					else:
-						linear_velocity = Vector2(randf_range(-300.0, -150.0), 0.0)
-			else:
-				if linear_velocity.x >= 0:
-					linear_velocity = Vector2(randf_range(150.0, 300.0), 0.0)
-				else:
-					linear_velocity = Vector2(randf_range(-300.0, -150.0), 0.0)
+			linear_velocity.x = first_velocity.x
+			linear_velocity.y = first_velocity.y
 
 func _integrate_forces(state):
 	if is_integrate_force == true:
-		print("impulse")
 		state.apply_central_impulse(Vector2(0, -30)) # 回転のことを考慮せずに力を外部から与えることができる
 		is_integrate_force = false
