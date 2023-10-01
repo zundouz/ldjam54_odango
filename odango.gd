@@ -56,7 +56,7 @@ func _process(delta):
 #			position.y = position.y - 20.0
 #			# TODO: いい感じの方法探す、transformだとむずい
 			is_integrate_force = true
-			var added_score : int = (center_bonus * center_bonus) / 10.0
+			var added_score : int = (center_bonus * center_bonus) / 10.0 + 10
 			if MyGlobal.remained_skewer != MyGlobal.remained_skewer_init_val - 1:
 				# スコア加算
 				MyGlobal.score += added_score
