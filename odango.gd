@@ -6,6 +6,8 @@ var death_hide_counter : int = 0
 
 var is_already_slowed : bool = false
 
+var is_integrate_force : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
@@ -41,8 +43,9 @@ func _process(delta):
 			# スコア加算
 			MyGlobal.score += 10
 			# ちょっと上にずれる演出
-			position.y = position.y - 20.0
-			# TODO: いい感じの方法探す、transformだとむずい
+#			position.y = position.y - 20.0
+#			# TODO: いい感じの方法探す、transformだとむずい
+			is_integrate_force = true
 			
 	if is_shot:
 		death_hide_counter += 1
@@ -55,7 +58,18 @@ func _process(delta):
 	if MyGlobal.game_state == MyGlobal.game_state_type.Title:
 		# タイトル画面では移動の一切を無効化
 		return
-			
+		
+	do_slowly_when_not_shotted_odango()
+
+## 画面外に言ったらfreeして消えてもらう
+#func _on_visible_on_screen_notifier_2d_screen_exited():
+#	queue_free()
+
+func _on_visible_on_screen_enabler_2d_screen_exited():
+	queue_free()
+
+func do_slowly_when_not_shotted_odango():
+	# TODO: 今、団子が向かっている方向に応じて方向は変化させずに速度だけを変えたい…
 	if is_shot == false:		
 		if MyGlobal.is_odango_finished == false:
 			# TODO: 当たってない団子をちょっと地味にする演出欲しい
@@ -79,10 +93,8 @@ func _process(delta):
 				else:
 					linear_velocity = Vector2(randf_range(-300.0, -150.0), 0.0)
 
-
-## 画面外に言ったらfreeして消えてもらう
-#func _on_visible_on_screen_notifier_2d_screen_exited():
-#	queue_free()
-
-func _on_visible_on_screen_enabler_2d_screen_exited():
-	queue_free()
+func _integrate_forces(state):
+	if is_integrate_force == true:
+		print("impulse")
+		state.apply_central_impulse(Vector2(0, -60)) # 回転のことを考慮せずに力を外部から与えることができる
+		is_integrate_force = false
