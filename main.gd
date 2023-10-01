@@ -40,6 +40,8 @@ func new_game():
 	MyGlobal.score = 0
 	MyGlobal.remained_skewer = MyGlobal.remained_skewer_init_val
 	MyGlobal.is_odango_finished = true
+	MyGlobal.is_now_bonus_time = false
+	MyGlobal.all_shotted_odango_kind.clear()
 	$HUD.update_score(MyGlobal.score)
 	$HUD.update_remain(MyGlobal.remained_skewer)
 	$HUD.show_message("Shoot Dango")
