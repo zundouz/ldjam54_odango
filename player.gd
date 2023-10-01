@@ -35,7 +35,7 @@ func _process(delta):
 		if MyGlobal.is_decide_key_just_pressed():
 			$AnimatedSprite2D.set_animation("shot")
 			$SeSwing.play()
-			MyGlobal.remained_skewer -= 1	
+			MyGlobal.remained_skewer -= 1
 	if is_missing_shot == true:
 		$AnimatedSprite2D.set_animation("shot")
 		missing_shot_counter = missing_shot_counter + 1

@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfiw8j8dbch73"]
+[gd_scene load_steps=13 format=3 uid="uid://bfiw8j8dbch73"]
 
 [ext_resource type="Script" path="res://odango.gd" id="1_au4to"]
-[ext_resource type="Texture2D" uid="uid://c2qtvq1u784y8" path="res://textures/odango_pink.png" id="1_fqoq2"]
 [ext_resource type="PackedScene" uid="uid://d2l3r7k2i14wt" path="res://center_bonus_label.tscn" id="2_suawd"]
 [ext_resource type="Texture2D" uid="uid://dfe84jyy2fyh0" path="res://textures/odango_green.png" id="3_e7d40"]
 [ext_resource type="Texture2D" uid="uid://74vjdi0ml4k7" path="res://textures/odango_bonus.png" id="3_l0dy3"]
-[ext_resource type="Texture2D" uid="uid://crir87mfo48cx" path="res://textures/odango_white.png" id="4_laubq"]
 [ext_resource type="AudioStream" uid="uid://ctwu3wuh10hi7" path="res://sounds/se/swing.wav" id="5_2ngai"]
+[ext_resource type="Texture2D" uid="uid://dmt0cyklwi4" path="res://textures/odango_green2.png" id="5_b0exf"]
+[ext_resource type="Texture2D" uid="uid://b12m0385p2giq" path="res://textures/odango_red1.png" id="6_yhe7a"]
+[ext_resource type="Texture2D" uid="uid://ba00igdid68t5" path="res://textures/odango_red2.png" id="7_h1b33"]
+[ext_resource type="Texture2D" uid="uid://0flaclgf6rj8" path="res://textures/odango_white1.png" id="8_p6btg"]
+[ext_resource type="Texture2D" uid="uid://clv8e7o2ghxi5" path="res://textures/odango_white2.png" id="9_cnht0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s00ll"]
 animations = [{
@@ -26,7 +29,7 @@ animations = [{
 "texture": ExtResource("3_e7d40")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_e7d40")
+"texture": ExtResource("5_b0exf")
 }],
 "loop": true,
 "name": &"green",
@@ -34,10 +37,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fqoq2")
+"texture": ExtResource("6_yhe7a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_fqoq2")
+"texture": ExtResource("7_h1b33")
 }],
 "loop": true,
 "name": &"red",
@@ -45,10 +48,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_laubq")
+"texture": ExtResource("8_p6btg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_laubq")
+"texture": ExtResource("9_cnht0")
 }],
 "loop": true,
 "name": &"white",
@@ -65,7 +68,7 @@ center_bonus_label = ExtResource("2_suawd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s00ll")
-animation = &"red"
+animation = &"white"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qjb0r")
