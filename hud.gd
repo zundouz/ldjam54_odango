@@ -18,7 +18,7 @@ func show_game_over():
 #	$StartButton.show()
 
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	$ScoreLabel.text = "¥" + str(score)
 
 func update_remain(remainAmount):
 	$RemainLabel.text = str(remainAmount)
