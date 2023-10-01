@@ -39,11 +39,9 @@ one_shot = true
 [node name="HUD" parent="." instance=ExtResource("4_h58th")]
 
 [node name="bg_shouji_left" parent="." instance=ExtResource("5_r6nah")]
-visible = false
 position = Vector2(128, 240)
 
 [node name="bg_shouji_right" parent="." instance=ExtResource("5_r6nah")]
-visible = false
 position = Vector2(512, 240)
 
 [node name="Node" type="Node" parent="."]
