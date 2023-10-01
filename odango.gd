@@ -10,6 +10,8 @@ var is_integrate_force : bool = false
 
 var first_velocity : Vector2 = Vector2.ZERO
 
+var shot_hit_judge_val : int = 36
+
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	# TODO: 乱数で色変更
@@ -35,9 +37,11 @@ func _process(delta):
 	
 	# ボタンを押したときに、座標が串の範囲内だったら得点
 	if MyGlobal.is_decide_key_just_pressed():
-		if (global_position.x < Center_X_Pos + 36
-			and global_position.x > Center_X_Pos - 36
+		if (global_position.x < Center_X_Pos + shot_hit_judge_val
+			and global_position.x > Center_X_Pos - shot_hit_judge_val
 			and $SeSwing.playing != true):
+			var center_bonus : int = shot_hit_judge_val - abs(global_position.x - Center_X_Pos)
+			print("score: " + str(center_bonus))
 			# シングルトンのような運用で、複数の団子がヒットしてしまっても効果音は1回しかならないようにする
 			if MyGlobal.is_swing_se_playing_on_odango == false:				
 				MyGlobal.is_swing_se_playing_on_odango = true
@@ -52,7 +56,7 @@ func _process(delta):
 			is_integrate_force = true
 			if MyGlobal.remained_skewer != MyGlobal.remained_skewer_init_val - 1:
 				# スコア加算
-				MyGlobal.score += 10
+				MyGlobal.score += (center_bonus * center_bonus) / 10.0
 			
 	if is_shot:
 		death_hide_counter += 1
