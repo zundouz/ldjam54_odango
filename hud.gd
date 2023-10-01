@@ -9,7 +9,7 @@ func show_message(text):
 	$MessageTimer.start()	
 
 func show_game_over():
-	show_message("We are closed for business today.")
+	show_message("Thank you for your purchase!")
 	await $MessageTimer.timeout
 	# $Message.text = "Odango"
 	$Message.show()
