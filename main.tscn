@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs3yxlce2rnex"]
+[gd_scene load_steps=13 format=3 uid="uid://bs3yxlce2rnex"]
 
 [ext_resource type="PackedScene" uid="uid://cultg46jnif3" path="res://player.tscn" id="1_lwcv8"]
 [ext_resource type="Script" path="res://main.gd" id="1_vhdd1"]
@@ -8,12 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://dejfnf75aimhk" path="res://audio_manager.tscn" id="6_6gx38"]
 [ext_resource type="PackedScene" uid="uid://dfd8tmd2ti527" path="res://BonusTimeLabel.tscn" id="7_xaw4e"]
 [ext_resource type="PackedScene" uid="uid://gsey4okg83rb" path="res://PureColorChainLabel.tscn" id="8_i6g6e"]
+[ext_resource type="Texture2D" uid="uid://b4ukd2hhyx7fm" path="res://textures/background.png" id="9_g75ln"]
+[ext_resource type="Script" path="res://BackGroundSprite2D.gd" id="10_jnl5x"]
 
 [sub_resource type="Curve2D" id="Curve2D_ux7l3"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 639, -3, 0, 0, 0, 0, 641, 481, 0, 0, 0, 0, -2, 483, 0, 0, 0, 0, -2, -1, 0, 0, 0, 0, -1, -1)
 }
 point_count = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjbwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_g75ln")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_vhdd1")
@@ -69,6 +82,11 @@ text = "BONUS TIME!!
 ×2"
 
 [node name="PureColorChainMessage" parent="BonusMessage" instance=ExtResource("8_i6g6e")]
+
+[node name="BackGroundSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 240)
+sprite_frames = SubResource("SpriteFrames_sjbwa")
+script = ExtResource("10_jnl5x")
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
